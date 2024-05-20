@@ -1,0 +1,20 @@
+services:
+    site-groupe:
+        image: siteimage:1.0.0
+        volumes:
+          - ./site-groupe:/Site
+        networks:
+            site-net:
+               ipv4_address: 172.18.0.2
+        deploy:
+           resources:
+              limits:
+                 cpus: '0.1'
+                 memory: 4096M
+networks:
+   site-net:
+    driver: bridge
+    ipam:
+      config:
+         - subnet: 172.18.0.0/16
+           gateway: 172.18.0.1
